@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 app.secret_key = "IAN"
 
-@app.route("/")
+@app.route("/home")
 def home():
     return render_template('home.html')
 
