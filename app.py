@@ -19,6 +19,10 @@ def courses():
 def documents():
     return render_template('documents.html')
 
+@app.route("/events")
+def events():
+    return render_template('events.html')
+
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     message = ''
