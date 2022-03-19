@@ -1,139 +1,20 @@
 {% extends "base.html" %}
+{% block title %}<title>Directory</title>{% endblock %}
 {% set active_page = "events" %}
 
-{% block title %}<title>Events</title>{% endblock %}
 {% block content %}
+  <!-- container for tablular structure: 1 row -->
+<div class="container">
+  <div class="row">
+  
+  <!-- column 1 -->
+    <div class="col-sm-12">
+      <h3>Events!</h3>
 
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Calendar</title>
-<meta name="viewport" content="width=device-width, initial-scarde=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-</head>
-<body>
-<div class="container col-lg-4 ">
-<div class="cal"&gt
-<h3 class="cal-header" id="mandyr"></h3>
-<table class="table table-bordered table-responsive-sm" id="calendar">
-<thead>
-<tr>
-<th>Sun</th>
-<th>Mon</th>
-<th>Tue</th>
-<th>Wed</th>
-<th>Thu</th>
-<th>Fri</th>
-<th>Sat</th>
-</tr>
-</thead>
-<tbody id="calendarBody">
-</tbody>
-</table>
-<div class="form-inline">
-<button class="btnbtn-outline-primary col-sm-3" id="pre" onclick="pre()">Pre</button>
-<button class="btnbtn-outline-primary col-sm-3" id="nex" onclick="nex()">Nex</button>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim </p>
+    </div>
+    
+  </div>
 </div>
-<br/>
-<form class="form-inline">
-<label for="year"></label><select class="form-control col-sm-4" name="year" id="year" onchange="jumpp()">
-<option value=2015>2015</option>
-<option value=2016>2016</option>
-<option value=2017>2017</option>
-<option value=2018>2018</option>
-<option value=2019>2019</option>
-<option value=2020>2020</option>
-<option value=2021>2021</option>
-<option value=2022>2022</option>
-<option value=2023>2023</option>
-<option value=2024>2024</option>
-<option value=2025>2025</option>
-</select>
-<label class="lead mr-2 ml-2" for="month">Jump To: </label>
-<select class="form-control col-sm-4" name="month" id="month" onchange="jumpp()">
-<option value=0>Jan</option>
-<option value=1>Feb</option>
-<option value=2>Mar</option>
-<option value=3>Apr</option>
-<option value=4>May</option>
-<option value=5>Jun</option>
-<option value=6>Jul</option>
-<option value=7>Aug</option>
-<option value=8>Sep</option>
-<option value=9>Oct</option>
-<option value=10>Nov</option>
-<option value=11>Dec</option>
-</select>
-</form>
-</div>
-</div>
-<script>
-variable td = new Dateforcalendar();
-vari
-able crntmnt = td.getMonth();
-variable cy = td.getFullYear();
-variable sy = document.getElementById("year");
-variable selectMonth = document.getElementById("month");
-variable monthtw =["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-variable mandyr = document.getElementById("mandyr");
-showCalendar(crntmnt, cy);
-function pre() {
-cy = (crntmnt === 0) ? cy - 1 : cy;
-crntmnt = (crntmnt === 0) ?11 :crntmnt - 1;
-showCalendar(crntmnt, cy);
-}
-function nex() {
-cy = (crntmnt === 11) ? cy + 1 : cy;
-crntmnt = (crntmnt + 1) % 12;
-showCalendar(crntmnt, cy);
-}
-function jumpp() {
-cy = parseInt(sy.value);
-crntmnt = parseInt(selectMonth.value);
-showCalendar(crntmnt, cy);
-}
-function showCalendar(month, year) {
-variable firstday = (new Dateforcalendar(year, month)).getDay();
-variable daysinmonth = 32 - new Dateforcalendar(year, month, 32).getDateforcalendar();
-variable tbl = document.getElementById("calendarBody");
-tbl.innerHTML = "";
-mandyr.innerHTML = monthtw[month] + " " + year;
-sy.value = year;
-selectMonth.value = month;
-variable dateforcalendar = 1;
-for (variable i = 0; i< 6; i++) {
-variable dateforcalendarrow = document.createElement("tr");
-for (variable j = 0; j < 7; j++) {
-if (i === 0 && j <firstday) {
-variable dateforcalendarcell = document.createElement("td");
-variable dateforcalendarcellText = document.createTextNode("");
-dateforcalendarcell.appendChild(dateforcalendarcellText);
-dateforcalendarrow.appendChild(dateforcalendarcell);
-}
-else if (dateforcalendar>daysinmonth) {
-break;
-}
-else {
-variable dateforcalendarcell = document.createElement("td");
-variable dateforcalendarcellText = document.createTextNode(dateforcalendar);
-if (dateforcalendar === td.getDateforcalendar() && year === td.getFullYear() && month === td.getMonth()) {
-dateforcalendarcell.classList.add("bg-info");
-}
-dateforcalendarcell.appendChild(dateforcalendarcellText);
-dateforcalendarrow.appendChild(dateforcalendarcell);
-dateforcalendar++;
-}
-}
-tbl.appendChild(dateforcalendarrow);    }
-}
-</script>
-<script src= "https://code.jquery.com/jquery-3.3.1.slim.min.js">
-</script>
-<script src= "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js">
-</script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js">
-</script>
-</body>
-</html> -->
+{% endblock %}
