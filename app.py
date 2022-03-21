@@ -165,7 +165,7 @@ def register():
         if get_user(username):
             new_id = add_user(username, password)
             error = "Registration sucessful. Please login"
-            return render_template('admin.html', error = error)
+            return render_template('issuelog.html', error = error)
         else:
             error = f"Username {username} not available"
         
