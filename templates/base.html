@@ -58,7 +58,8 @@
         (url_for('directory'), 'directory', 'Directory'),
         (url_for('events'), 'events', 'Events'),
         (url_for('contact'), 'contact', 'Contact'),
-        (url_for('admin'), 'admin', 'Admin')
+        (url_for('admin'), 'admin', 'Admin'),
+        (url_for('issuelog'), 'issuelog', 'Issue Log')
     ] -%}
     <!-- Loop to set proper link active in Navbar -->
     {% set active_page = active_page|default('home') -%}
