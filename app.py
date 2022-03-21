@@ -48,6 +48,23 @@ def contact():
     else:
         return render_template('contact.html', message=message)
 
+@app.route('/issuelog', methods=['GET', 'POST'])
+def issuelog():
+    message = ''
+    if request.method == 'POST':
+        fname = request.form['fname']
+        lname = request.form['lname']
+        eaddress = request.form['eaddress']
+        message = request.form['message']
+        result = contact_form(fname, lname, eaddress, message)
+
+        if result:
+            return render_template('issuelog.html', message='Thank you for your submission')
+        else:
+            return render_template('issuelog.html', message='Error with submission')
+    else:
+        return render_template('issuelog.html', message=message)
+
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     
@@ -108,28 +125,6 @@ def admin():
     # return the admin page, showing any message or data that we may have
     return render_template('admin.html', error = error, records = records)
     
-
-@app.route("/register", methods=['GET', 'POST'])
-def register():
-    
-    error = False
-    new_id = False
-
-    # If user submiited form to add a user
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-
-        if get_user(username):
-            new_id = add_user(username, password)
-            error = "Registration sucessful. Please login"
-            return render_template('admin.html', error = error)
-        else:
-            error = f"Username {username} not available"
-        
-
-    return render_template('register.html', error = error, id = new_id)
-
 
 @app.route("/edit", methods=['GET', 'POST'])
 def edit():
