@@ -109,10 +109,8 @@ def register():
 
     return render_template('register.html', error = error, id = new_id)
 
-# ISSUE LOG
-
-@app.route("/issuelog", methods=['GET', 'POST'])
-def issuelog():
+@app.route("/admin", methods=['GET', 'POST'])
+def admin():
     error = ''
     records = ''
     print(request)
@@ -121,7 +119,7 @@ def issuelog():
     if request.method == 'POST':
 
         # If the form was Login, perform log in steps
-        if request.form.get('issuelog') == 'Login':
+        if request.form.get('admin') == 'Login':
             username = request.form['username']
             password = request.form['password']
 
@@ -139,7 +137,7 @@ def issuelog():
                 error = 'Invalid Username or Password'
         
         # if form was logout button, end user session
-        elif request.form.get('issuelog')  == 'Logout':
+        elif request.form.get('admin')  == 'Logout':
             session.pop('user_id')
 
         
@@ -147,8 +145,8 @@ def issuelog():
     if 'user_id' in session:
         records = get_records()
 
-    # return the issuelog page, showing any message or data that we may have
-    return render_template('issuelog.html', error = error, records = records)
+    # return the admin page, showing any message or data that we may have
+    return render_template('admin.html', error = error, records = records)
     
 
 @app.route("/register", methods=['GET', 'POST'])
@@ -165,7 +163,7 @@ def register():
         if get_user(username):
             new_id = add_user(username, password)
             error = "Registration sucessful. Please login"
-            return render_template('issuelog.html', error = error)
+            return render_template('admin.html', error = error)
         else:
             error = f"Username {username} not available"
         
